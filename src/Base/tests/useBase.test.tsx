@@ -1,55 +1,56 @@
-
-import { render, renderHook } from '../../testConfig';
+import { render, renderHook } from "../../testConfig";
 import { useNavigate } from "react-router-dom";
 import { useRoute } from "../hooks/useBase";
 import { ModuleBase } from "../ModuleBase";
 import { BaseProps } from "../types/BaseTypes";
 
 const mockNavigate = jest.fn();
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
   useNavigate: () => mockNavigate,
   useLocation: () => {
     return {
-      pathname: '/farm/dashboard',
+      pathname: "/farm/dashboard",
     };
   },
 }));
 const mockAddTranslation = jest.fn();
 const mockNavigateTo = jest.fn();
 
-describe('useBase', () => {
+describe("useBase", () => {
   const customProps: BaseProps = {
-    token: '',
-    moduleId: '',
-    modulePermissionToken: '',
+    token: "",
+    moduleId: "",
+    modulePermissionToken: "",
     addNotification: jest.fn(),
-    basePath: '',
-    sourcePath: '',
-    organizationId: '',
+    basePath: "",
+    sourcePath: "",
+    organizationId: "",
     config: null,
     navigateTo: mockNavigateTo,
     addTranslation: mockAddTranslation,
-    currentNavigationPath: '/somePath',
-    currentLanguage: '',
+    currentNavigationPath: "/somePath",
+    currentLanguage: "",
     standalone: true,
   };
-  test('useRouting standalone', () => {
+  test("useRouting standalone", () => {
     render(<ModuleBase props={customProps} routes={{}} />);
     const navigate = renderHook(() => useNavigate());
-    navigate.result.current('/path');
-    expect(mockNavigate).toHaveBeenCalledWith('/path');
+    navigate.result.current("/path");
+    expect(mockNavigate).toHaveBeenCalledWith("/path");
   });
 
-  test('useRouting not standalone', () => {
-    render(<ModuleBase props={{ ...customProps, standalone: false }} routes={{}} />);
+  test("useRouting not standalone", () => {
+    render(
+      <ModuleBase props={{ ...customProps, standalone: false }} routes={{}} />,
+    );
     const navigate = renderHook(() => useNavigate());
-    navigate.result.current('/path');
-    expect(mockNavigate).toHaveBeenCalledWith('/somePath');
-    expect(mockNavigateTo).toHaveBeenCalledWith('/path');
+    navigate.result.current("/path");
+    expect(mockNavigate).toHaveBeenCalledWith("/somePath");
+    expect(mockNavigateTo).toHaveBeenCalledWith("/path");
   });
 
-  test('useRouting not standalone with currentNavigationPath', () => {
+  test("useRouting not standalone with currentNavigationPath", () => {
     render(
       <ModuleBase
         props={
@@ -60,18 +61,18 @@ describe('useBase', () => {
           } as unknown as BaseProps
         }
         routes={{}}
-      />
+      />,
     );
     const navigate = renderHook(() => useNavigate());
-    navigate.result.current('/path');
+    navigate.result.current("/path");
     expect(mockNavigate).not.toHaveBeenCalled();
-    expect(mockNavigateTo).toHaveBeenCalledWith('/path');
+    expect(mockNavigateTo).toHaveBeenCalledWith("/path");
   });
 
   //useRoute
-  test('useRoute', () => {
+  test("useRoute", () => {
     render(<ModuleBase props={customProps} routes={{}} />);
-    const { result } = renderHook(() => useRoute('/path'));
-    expect(result.current).toBe('/path');
+    const { result } = renderHook(() => useRoute("/path"));
+    expect(result.current).toBe("/path");
   });
 });

@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useConfig } from './hooks/useBase';
-import { Routing } from './routing/Routing';
-import { HortiViewService } from './services/HortiView/HortiViewService';
-import { SignalRProvider } from './services/SignalR/SignalRProvider';
-import { useSignalRMessages } from './services/SignalR/useSignalRMessages';
-import { useBasePropsStore } from './stores/BaseStore';
-import { useConfigurationStore } from './stores/ConfigurationStore';
-import { BaseProps, RouteDefinition } from './types/BaseTypes';
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useConfig } from "./hooks/useBase";
+import { Routing } from "./routing/Routing";
+import { HortiViewService } from "./services/HortiView/HortiViewService";
+import { SignalRProvider } from "./services/SignalR/SignalRProvider";
+import { useSignalRMessages } from "./services/SignalR/useSignalRMessages";
+import { useBasePropsStore } from "./stores/BaseStore";
+import { useConfigurationStore } from "./stores/ConfigurationStore";
+import { BaseProps, RouteDefinition } from "./types/BaseTypes";
 
 type ModuleBaseProps = {
   props: BaseProps;
@@ -22,12 +22,16 @@ type ModuleBaseProps = {
  * @param routes routeDefinitions for the module, that will render the routing (with the basePath)
  * @returns a routing component with the given routes
  */
-export const ModuleBase = ({ props, requiredProps, routes }: ModuleBaseProps) => {
+export const ModuleBase = ({
+  props,
+  requiredProps,
+  routes,
+}: ModuleBaseProps) => {
   const { i18n, t } = useTranslation();
-  const setBaseProps = useBasePropsStore(state => state.setCustomProps);
-  const currentLanguage = useBasePropsStore(state => state.currentLanguage);
+  const setBaseProps = useBasePropsStore((state) => state.setCustomProps);
+  const currentLanguage = useBasePropsStore((state) => state.currentLanguage);
   // to load the environment config a sourcePath is needed
-  const config = useConfigurationStore(state => state.config);
+  const config = useConfigurationStore((state) => state.config);
 
   useSignalRMessages();
 
@@ -42,10 +46,13 @@ export const ModuleBase = ({ props, requiredProps, routes }: ModuleBaseProps) =>
     props.addTranslation({ key: "local", value: t("routes.local") });
     //iterate over every route and add the translation to the translation store
     if (routes)
-      Object.values(routes).forEach(route => {
+      Object.values(routes).forEach((route) => {
         const translationKey = route.translationKey;
         if (translationKey)
-          props.addTranslation({ key: translationKey, value: t(`routes.${translationKey}`) });
+          props.addTranslation({
+            key: translationKey,
+            value: t(`routes.${translationKey}`),
+          });
       });
   }, [props, setBaseProps, requiredProps, config, t, routes]);
 
@@ -53,11 +60,9 @@ export const ModuleBase = ({ props, requiredProps, routes }: ModuleBaseProps) =>
     i18n.changeLanguage(currentLanguage);
   }, [currentLanguage, i18n]);
 
-  if (!config || config?.api?.prefix === '' || !HortiViewService.getInstance())
+  if (!config || config?.api?.prefix === "" || !HortiViewService.getInstance())
     // return <LoadingSpinner text={t('common.loadingModule')} />;
-    return <div>
-      {t('common.loading')}
-    </div> 
+    return <div>{t("common.loading")}</div>;
   return (
     <SignalRProvider>
       <div
@@ -65,8 +70,8 @@ export const ModuleBase = ({ props, requiredProps, routes }: ModuleBaseProps) =>
         style={{
           width: 640,
           minHeight: 400,
-          margin: '128px auto',
-          border: '1px solid gray',
+          margin: "128px auto",
+          border: "1px solid gray",
           padding: 20,
         }}
       >
@@ -81,9 +86,12 @@ export const ModuleBase = ({ props, requiredProps, routes }: ModuleBaseProps) =>
  * @param props props to be validated
  * @param requiredProps props that will be validated/checked if they exist
  */
-const validateProps = (props: BaseProps, requiredProps?: (keyof BaseProps)[]) => {
+const validateProps = (
+  props: BaseProps,
+  requiredProps?: (keyof BaseProps)[],
+) => {
   if (requiredProps) {
-    requiredProps.forEach(prop => {
+    requiredProps.forEach((prop) => {
       checkIfPropExists(prop, props);
     });
   }

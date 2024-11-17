@@ -6,12 +6,22 @@ import { RouteConfig } from "../types/BaseTypes";
  * @param basePath a base path for the routing (needs to be prepended to the route paths)
  * @returns the routes, that will be used by a router to handle the navigation
  */
-export const Routing = ({ basePath, routes }: { basePath: string, routes: RouteConfig[] }) => {
+export const Routing = ({
+  basePath,
+  routes,
+}: {
+  basePath: string;
+  routes: RouteConfig[];
+}) => {
   const buildRoute = useRouteBuilder(basePath);
   return (
     <Routes>
       {routes.map((route) => (
-        <Route key={route.path} path={buildRoute(route.path)} element={route.element} /> 
+        <Route
+          key={route.path}
+          path={buildRoute(route.path)}
+          element={route.element}
+        />
       ))}
     </Routes>
   );

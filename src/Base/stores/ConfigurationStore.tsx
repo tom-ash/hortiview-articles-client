@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { Configuration } from '../types/BaseTypes';
+import { create } from "zustand";
+import { Configuration } from "../types/BaseTypes";
 
 /**
  * Store with the configuration object that is used to configure the environment of the module.
@@ -20,9 +20,9 @@ type ConfigurationStore = {
  * Store with the configuration object that is used to configure the environment of the module.
  * If you handle the configuration by another way, this store can be replaced or removed.
  */
-export const useConfigurationStore = create<ConfigurationStore>(set => ({
+export const useConfigurationStore = create<ConfigurationStore>((set) => ({
   config: null,
-  setConfig: config => {
+  setConfig: (config) => {
     set(() => ({ config }));
   },
 }));

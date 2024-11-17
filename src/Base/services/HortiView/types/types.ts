@@ -1,4 +1,4 @@
-import { Expand, OrderBy, Filter as QueryFilter, Select } from 'odata-query';
+import { Expand, OrderBy, Filter as QueryFilter, Select } from "odata-query";
 /**
  * The type of the api to call
  */
@@ -16,21 +16,21 @@ export type TextType = {
  * Definition of a request configuration in the system
  */
 export type RequestConfig = {
-  redirect: 'follow';
-  credentials: 'omit';
+  redirect: "follow";
+  credentials: "omit";
   headers: RequestHeader;
-  method: 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT';
+  method: "GET" | "POST" | "PATCH" | "DELETE" | "PUT";
 };
 
 /**
  * Definition of a request header in the system
  */
 export type RequestHeader = {
-  'Content-Type'?: 'application/json';
+  "Content-Type"?: "application/json";
   orgId?: string;
   Authorization?: string;
   Permission?: string;
-  'Api-Version'?: '1.0' | '2.0';
+  "Api-Version"?: "1.0" | "2.0";
 };
 
 /**

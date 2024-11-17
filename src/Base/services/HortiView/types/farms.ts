@@ -1,4 +1,4 @@
-import { Field } from './field';
+import { Field } from "./field";
 
 /**
  * farm dto (only necessary fields - for now)

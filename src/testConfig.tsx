@@ -1,10 +1,10 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { RenderHookResult, render, renderHook } from '@testing-library/react';
-import { PropsWithChildren } from 'react';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { RenderHookResult, render, renderHook } from "@testing-library/react";
+import { PropsWithChildren } from "react";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 
 // re-export everything
-export * from '@testing-library/react';
+export * from "@testing-library/react";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +24,10 @@ const TestSuite = ({ children }: PropsWithChildren) => {
 };
 
 // render wrapper with with providers and initial routing
-const TestSuiteWithRouting = ({ children, path }: PropsWithChildren<{ path: string }>) => {
+const TestSuiteWithRouting = ({
+  children,
+  path,
+}: PropsWithChildren<{ path: string }>) => {
   return (
     <QueryClientProvider client={queryClient}>
       <MemoryRouter initialEntries={[path]}>{children}</MemoryRouter>
@@ -33,23 +36,32 @@ const TestSuiteWithRouting = ({ children, path }: PropsWithChildren<{ path: stri
 };
 
 // override render method
-const customRender = (ui: React.ReactElement, options?: Record<string, unknown>) =>
-  render(ui, { wrapper: TestSuite, ...options });
+const customRender = (
+  ui: React.ReactElement,
+  options?: Record<string, unknown>,
+) => render(ui, { wrapper: TestSuite, ...options });
 
 // override render hook method
 const customRenderHook = <T, P>(
   hook: () => T,
-  options?: Record<string, unknown>
-): RenderHookResult<T, P> => renderHook(hook, { wrapper: TestSuite, ...options });
+  options?: Record<string, unknown>,
+): RenderHookResult<T, P> =>
+  renderHook(hook, { wrapper: TestSuite, ...options });
 
 const customRenderWithRouting = (
   ui: React.ReactElement,
   path: string,
-  options?: Record<string, unknown>
+  options?: Record<string, unknown>,
 ) =>
   render(ui, {
-    wrapper: () => <TestSuiteWithRouting path={path}>{ui}</TestSuiteWithRouting>,
+    wrapper: () => (
+      <TestSuiteWithRouting path={path}>{ui}</TestSuiteWithRouting>
+    ),
     ...options,
   });
 
-export { customRenderWithRouting, customRender as render, customRenderHook as renderHook };
+export {
+  customRenderWithRouting,
+  customRender as render,
+  customRenderHook as renderHook,
+};

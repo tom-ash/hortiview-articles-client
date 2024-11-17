@@ -1,20 +1,22 @@
-import { HortiViewService } from '../services/HortiView/HortiViewService';
-import { useConfigurationStore } from '../stores/ConfigurationStore';
-import { BaseProps } from '../types/BaseTypes';
-import { useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useBasePropsStore } from '../stores/BaseStore';
+import { HortiViewService } from "../services/HortiView/HortiViewService";
+import { useConfigurationStore } from "../stores/ConfigurationStore";
+import { BaseProps } from "../types/BaseTypes";
+import { useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { useBasePropsStore } from "../stores/BaseStore";
 // re-export everything
-export * from 'react-router-dom';
+export * from "react-router-dom";
 
 /**
  * Hook to navigate to a specific path in the module and the host application
  * @returns a function to navigate to a specific path (with the base path)
  */
 const useRouting = () => {
-  const currentNavigationPath = useBasePropsStore(state => state.currentNavigationPath);
-  const standalone = useBasePropsStore(state => state.standalone);
-  const navigateTo = useBasePropsStore(state => state.navigateTo);
+  const currentNavigationPath = useBasePropsStore(
+    (state) => state.currentNavigationPath,
+  );
+  const standalone = useBasePropsStore((state) => state.standalone);
+  const navigateTo = useBasePropsStore((state) => state.navigateTo);
   const navigateFunc = useNavigate();
   //#region Navigation
   const navigate = useMemo(() => {
@@ -56,7 +58,7 @@ const route = ({ base, path }: { base: string; path: string }) => {
  * @returns the route with the base path
  */
 export const useRoute = (path: string) => {
-  const basePath = useBasePropsStore(state => state.basePath);
+  const basePath = useBasePropsStore((state) => state.basePath);
   return route({ base: basePath, path });
 };
 
@@ -68,18 +70,26 @@ export const useRoute = (path: string) => {
  * @param sourcePath path to the module
  */
 export const useConfig = (props: BaseProps) => {
-  const { sourcePath, modulePermissionToken, standalone, organizationId, config } = props;
-  const setConfig = useConfigurationStore(state => state.setConfig);
+  const {
+    sourcePath,
+    modulePermissionToken,
+    standalone,
+    organizationId,
+    config,
+  } = props;
+  const setConfig = useConfigurationStore((state) => state.setConfig);
   const getConfig = async () => {
-    const existing = document.getElementById(config?.shortName ?? 'template_env');
+    const existing = document.getElementById(
+      config?.shortName ?? "template_env",
+    );
     if (existing) {
       setConfig(buildConfig());
     }
 
     if (!existing) {
-      const path = sourcePath.substring(0, sourcePath.lastIndexOf('/'));
-      const script = document.createElement('script');
-      script.id = config?.shortName ?? 'template_env';
+      const path = sourcePath.substring(0, sourcePath.lastIndexOf("/"));
+      const script = document.createElement("script");
+      script.id = config?.shortName ?? "template_env";
       script.src = `${path}/config/env.js`;
       script.onload = () => {
         // get the config from the window object
@@ -89,7 +99,7 @@ export const useConfig = (props: BaseProps) => {
           !!standalone,
           modulePermissionToken,
           config?.api,
-          organizationId
+          organizationId,
         );
         // set the config in the store
         setConfig(config);
@@ -110,14 +120,14 @@ const buildConfig = () => {
   const env = (window as any).__env_template__;
   const config = {
     api: {
-      prefix: env?.API_PREFIX ?? '',
-      user: env?.USER_API ?? '',
-      farm: env?.FARM_API ?? '',
-      common: env?.COMMON_API ?? '',
-      proxy: env?.PROXY_API ?? '',
-      module: env?.MODULE_API ?? '',
+      prefix: env?.API_PREFIX ?? "",
+      user: env?.USER_API ?? "",
+      farm: env?.FARM_API ?? "",
+      common: env?.COMMON_API ?? "",
+      proxy: env?.PROXY_API ?? "",
+      module: env?.MODULE_API ?? "",
     },
-    environment: 'Hortiview-articles-client',
+    environment: "Hortiview-articles-client",
   };
   return config;
 };

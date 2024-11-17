@@ -5,55 +5,38 @@ import { useTranslation } from "react-i18next";
 import { useArticle } from "../../hooks/useArticle";
 
 export const ArticlesShow = () => {
-    const navigate = useNavigate();
-    const { t } = useTranslation();
-    const { id } = useParams();
-    const article = useArticle(Number(id))
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { id } = useParams();
+  const article = useArticle(Number(id));
 
-    // TODO: Add loader.
-    if (!article) {
-      return (
-        <div>
-          LOADING
-        </div>
-      )
-    }
+  // TODO: Add loader.
+  if (!article) {
+    return <div>LOADING</div>;
+  }
 
-    const {
-        title,
-        author,
-        publishedOn,
-        description,
-        content,
-        tags,
-    } = article
+  const { title, author, publishedOn, description, content, tags } = article;
 
-    return (
-        <div>
-            <h1>
-                {title}
-            </h1>
-            <div>
-                {author.name}
-            </div>
-            <p>{description}</p>
-            <div className='article'>
-                {/* TODO: Add structure and */}
-                {publishedOn}
-                {content}
-            </div>
-            {tags && (
-                <ul>
-                {tags.map(({ value }) => {
-                    return (
-                    <li>
-                        {value}
-                    </li>
-                    )
-                })}
-                </ul>
-            )}
-            <Button onClick={() => navigate(RouteConfig.ArticlesIndex.path)}>{t('template.articlesPageLink')}</Button>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1>{title}</h1>
+      <div>{author.name}</div>
+      <p>{description}</p>
+      <div className="article">
+        {/* TODO: Add structure and */}
+        {publishedOn}
+        {content}
+      </div>
+      {tags && (
+        <ul>
+          {tags.map(({ value }) => {
+            return <li>{value}</li>;
+          })}
+        </ul>
+      )}
+      <Button onClick={() => navigate(RouteConfig.ArticlesIndex.path)}>
+        {t("template.articlesPageLink")}
+      </Button>
+    </div>
+  );
+};

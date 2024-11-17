@@ -21,10 +21,10 @@ interface PropertyBag extends Record<string, string> {}
  * Enum for the possible operation types
  */
 export enum OperationType {
-  Create = 'Create',
-  Read = 'Read',
-  Update = 'Update',
-  Delete = 'Delete',
+  Create = "Create",
+  Read = "Read",
+  Update = "Update",
+  Delete = "Delete",
 }
 
 /**
@@ -32,8 +32,8 @@ export enum OperationType {
  * currently not in use
  */
 export enum MessageType {
-  Notification = 'Notification',
-  Alert = 'Alert',
+  Notification = "Notification",
+  Alert = "Alert",
 }
 
 /**
@@ -43,8 +43,8 @@ export enum MessageType {
  * of course you can add more entity types if needed for your module
  */
 export enum EntityType {
-  Block = 'Block',
-  Field = 'Field',
+  Block = "Block",
+  Field = "Field",
 }
 
 /**
@@ -54,6 +54,6 @@ export enum EntityType {
  * of course you can add more icons if needed for your module
  */
 export const NotificationIcons: Record<keyof typeof EntityType, string> = {
-  Block: 'border_clear',
-  Field: 'grass',
+  Block: "border_clear",
+  Field: "grass",
 };

@@ -1,17 +1,17 @@
 {
-    "template": {
-        "homeHeading": "Hortiview Articles",
-        "homeIntro": "Bienvenido a Hortiview Articles.",
-        "homePageLink": "Ir a casa",
-        "articlesPageTitle": "TODO",
-        "articlesPageText": "TODO",
-        "articlesPageLink": "Ir a artículos",
-        "articlePageLink": "(Show Article)"
-    },
-    "routes": {
-        "local": "Módulo de plantilla",
-        "debug": "Depuración",
-        "testpage": "Página de prueba",
-        "articles": "Artículos"
-    }
+  "template": {
+    "homeHeading": "Hortiview Articles",
+    "homeIntro": "Bienvenido a Hortiview Articles.",
+    "homePageLink": "Ir a casa",
+    "articlesPageTitle": "TODO",
+    "articlesPageText": "TODO",
+    "articlesPageLink": "Ir a artículos",
+    "articlePageLink": "(Show Article)"
+  },
+  "routes": {
+    "local": "Módulo de plantilla",
+    "debug": "Depuración",
+    "testpage": "Página de prueba",
+    "articles": "Artículos"
+  }
 }

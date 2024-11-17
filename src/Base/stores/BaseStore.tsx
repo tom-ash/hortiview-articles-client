@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { BaseProps } from '../types/BaseTypes';
+import { create } from "zustand";
+import { BaseProps } from "../types/BaseTypes";
 
 /**
  * Store with base properties that are passed to the module
@@ -12,21 +12,24 @@ type BasePropsStore = BaseProps & {
 /**
  * Global Store with base properties, to be used in the module
  */
-export const useBasePropsStore = create<BasePropsStore>(set => ({
+export const useBasePropsStore = create<BasePropsStore>((set) => ({
   config: null,
-  sourcePath: '',
-  basePath: '',
-  currentLanguage: 'en',
-  currentNavigationPath: '',
-  navigateTo: () => console.warn('navigateTo not implemented, please provide a function'),
-  organizationId: '',
-  addTranslation: () => console.warn('addTranslation not implemented, please provide a function'),
-  addNotification: () => console.warn('addNotification not implemented, please provide a function'),
-  setCustomProps: props => {
+  sourcePath: "",
+  basePath: "",
+  currentLanguage: "en",
+  currentNavigationPath: "",
+  navigateTo: () =>
+    console.warn("navigateTo not implemented, please provide a function"),
+  organizationId: "",
+  addTranslation: () =>
+    console.warn("addTranslation not implemented, please provide a function"),
+  addNotification: () =>
+    console.warn("addNotification not implemented, please provide a function"),
+  setCustomProps: (props) => {
     set(() => props);
   },
   standalone: false,
-  token: '',
-  modulePermissionToken: '',
-  moduleId: '',
+  token: "",
+  modulePermissionToken: "",
+  moduleId: "",
 }));

@@ -1,10 +1,10 @@
-import i18next from 'i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
-import Backend from 'i18next-http-backend';
-import { initReactI18next } from 'react-i18next';
+import i18next from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import Backend from "i18next-http-backend";
+import { initReactI18next } from "react-i18next";
 
-import en from './locales/en/templateTranslations.json';
-import es from './locales/es/templateTranslations.json';
+import en from "./locales/en/templateTranslations.json";
+import es from "./locales/es/templateTranslations.json";
 
 // different instances have to be created since we initialize i18n for each of the modules and the main platform
 const i18n = i18next.createInstance();
@@ -22,8 +22,8 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    lng: 'en',
-    fallbackLng: ['en', 'es', 'de'],
+    lng: "en",
+    fallbackLng: ["en", "es", "de"],
     resources: {
       en: {
         translation: en,

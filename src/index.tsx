@@ -1,2 +1,2 @@
-import('./App/bootstrap');
-  export {};
+import("./App/bootstrap");
+export {};

@@ -1,6 +1,6 @@
-import { Block } from '../services/HortiView/types/block';
-import { Farm } from '../services/HortiView/types/farms';
-import { Field } from '../services/HortiView/types/field';
+import { Block } from "../services/HortiView/types/block";
+import { Farm } from "../services/HortiView/types/farms";
+import { Field } from "../services/HortiView/types/field";
 
 /**
  * Properties that are passed to the Base component by the host application
@@ -191,16 +191,16 @@ export interface FarmOrgEntity {
 }
 
 export type FarmOrgEntityTypes =
-  | 'farms'
-  | 'fields'
-  | 'zones'
-  | 'irrigation_stations'
-  | 'farm_organizations';
+  | "farms"
+  | "fields"
+  | "zones"
+  | "irrigation_stations"
+  | "farm_organizations";
 
 export const FarmOrgEntityTypeResultMap: Record<FarmOrgEntityTypes, string> = {
-  farms: 'farm',
-  fields: 'field',
-  zones: 'block',
-  irrigation_stations: 'irrigationStation',
-  farm_organizations: 'farmOrg',
+  farms: "farm",
+  fields: "field",
+  zones: "block",
+  irrigation_stations: "irrigationStation",
+  farm_organizations: "farmOrg",
 };

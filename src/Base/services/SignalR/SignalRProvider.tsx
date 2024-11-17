@@ -1,9 +1,8 @@
-
-import { PropsWithChildren, useMemo } from 'react';
-import { createSignalRContext } from 'react-signalr';
-import { ProviderProps } from 'react-signalr/lib/signalr/provider';
-import { useBasePropsStore } from '../../stores/BaseStore';
-import { useConfigurationStore } from '../../stores/ConfigurationStore';
+import { PropsWithChildren, useMemo } from "react";
+import { createSignalRContext } from "react-signalr";
+import { ProviderProps } from "react-signalr/lib/signalr/provider";
+import { useBasePropsStore } from "../../stores/BaseStore";
+import { useConfigurationStore } from "../../stores/ConfigurationStore";
 
 /**
  * SignalRProvider on behalf of the module
@@ -17,22 +16,23 @@ export const SignalRModuleContext = createSignalRContext();
  */
 export const SignalRProvider = ({ children }: PropsWithChildren) => {
   // get token from store
-  const token = useBasePropsStore(state => state.modulePermissionToken);
-  const moduleId = useBasePropsStore(state => state.moduleId);
-  const orgId = useBasePropsStore(state => state.organizationId);
-  const config = useConfigurationStore(state => state.config);
+  const token = useBasePropsStore((state) => state.modulePermissionToken);
+  const moduleId = useBasePropsStore((state) => state.moduleId);
+  const orgId = useBasePropsStore((state) => state.organizationId);
+  const config = useConfigurationStore((state) => state.config);
 
   // Basic SignalR provider props
-  const providerProps: Omit<ProviderProps, 'url' | 'children'> = useMemo(
+  const providerProps: Omit<ProviderProps, "url" | "children"> = useMemo(
     () => ({
       accessTokenFactory: () => token,
       headers: {
         Authorization: `Bearer ${token}`,
       },
       automaticReconnect: [10000, 20000, 30000, 60000], // 10s, 20s, 30s, 60s four retries
-      onError: async error => console.error('SignalR connection error', error),
+      onError: async (error) =>
+        console.error("SignalR connection error", error),
     }),
-    [token]
+    [token],
   );
 
   /**

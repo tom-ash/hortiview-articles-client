@@ -5,64 +5,49 @@ import { useTranslation } from "react-i18next";
 import { useArticles } from "../../hooks/useArticles";
 
 export const ArticlesIndex = () => {
-    const navigate = useNavigate();
-    const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
 
-    const articles = useArticles()
+  const articles = useArticles();
 
-    return (
-        <div>
-            <h1>{t('template.articlesPageTitle')}</h1>
-            <p>{t('template.articlesPageText')}</p>
+  return (
+    <div>
+      <h1>{t("template.articlesPageTitle")}</h1>
+      <p>{t("template.articlesPageText")}</p>
 
-            {(articles || []).map(article => {
-                const {
-                    id,
-                    title,
-                    author,
-                    publishedOn,
-                    description,
-                    tags,
-                } = article
+      {(articles || []).map((article) => {
+        const { id, title, author, publishedOn, description, tags } = article;
 
-                return (
-                  <div
-                    style={{
-                      background: 'lightgray',
-                      padding: 20,
-                      marginTop: 20,
-                      marginBottom: 20,
-                    }}
-                  >
-                    <h2>
-                      {title}
-                    </h2>
-                    <div>
-                      {author.name}
-                    </div>
-                    <div>
-                        {publishedOn}
-                    </div>
-                    <div>
-                      {description}
-                    </div>
-                    {tags && (
-                      <ul>
-                        {tags.map(({ value }) => {
-                          return (
-                            <li>
-                              {value}
-                            </li>
-                          )
-                        })}
-                      </ul>
-                    )}
-                    <Button onClick={() => navigate(`${id}`)}>{t('template.articlePageLink')}</Button>
-                  </div>
-                )
-            })}
+        return (
+          <div
+            style={{
+              background: "lightgray",
+              padding: 20,
+              marginTop: 20,
+              marginBottom: 20,
+            }}
+          >
+            <h2>{title}</h2>
+            <div>{author.name}</div>
+            <div>{publishedOn}</div>
+            <div>{description}</div>
+            {tags && (
+              <ul>
+                {tags.map(({ value }) => {
+                  return <li>{value}</li>;
+                })}
+              </ul>
+            )}
+            <Button onClick={() => navigate(`${id}`)}>
+              {t("template.articlePageLink")}
+            </Button>
+          </div>
+        );
+      })}
 
-            <Button onClick={() => navigate(RouteConfig.Home.path)}>{t('template.homePageLink')}</Button>
-        </div>
-    )
-}
+      <Button onClick={() => navigate(RouteConfig.Home.path)}>
+        {t("template.homePageLink")}
+      </Button>
+    </div>
+  );
+};

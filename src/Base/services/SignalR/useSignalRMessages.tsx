@@ -1,12 +1,17 @@
-import { useQueryClient } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
-import { invalidateMultipleQueries } from '../HortiView/Helper';
-import { SignalRModuleContext } from './SignalRProvider';
-import { EntityType, NotificationIcons, OperationType, SignalRMessage } from './signalR';
-import styles from './signalRProvider.module.css';
-import { useBasePropsStore } from '../../stores/BaseStore';
-import { NotificationDto } from '../../types/BaseTypes';
-import React from 'react';
+import { useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
+import { invalidateMultipleQueries } from "../HortiView/Helper";
+import { SignalRModuleContext } from "./SignalRProvider";
+import {
+  EntityType,
+  NotificationIcons,
+  OperationType,
+  SignalRMessage,
+} from "./signalR";
+import styles from "./signalRProvider.module.css";
+import { useBasePropsStore } from "../../stores/BaseStore";
+import { NotificationDto } from "../../types/BaseTypes";
+import React from "react";
 
 /**
  * useSignalRMessages
@@ -16,19 +21,19 @@ import React from 'react';
  * user targets: UserAdminPushNotification, HVAdminPushNotification
  */
 export const useSignalRMessages = () => {
-  const addNotification = useBasePropsStore(state => state.addNotification);
+  const addNotification = useBasePropsStore((state) => state.addNotification);
 
   const { mapMessageToAlert } = useMessageMapper();
   const { triggerAdditionalFunctions } = useTriggerAdditionalFunctions();
 
   // get all messages for organizations
   SignalRModuleContext.useSignalREffect(
-    'ModuleApiPushNotification',
+    "ModuleApiPushNotification",
     (...[message]) => {
       addNotification(mapMessageToAlert(message as SignalRMessage));
       triggerAdditionalFunctions(message as SignalRMessage);
     },
-    [addNotification]
+    [addNotification],
   );
 };
 
@@ -74,7 +79,7 @@ const useMessageMapper = () => {
         />
       ),
       timeStamp: new Date(),
-      moduleName: '',
+      moduleName: "",
     };
   };
 
@@ -95,7 +100,9 @@ const useTriggerAdditionalFunctions = () => {
     switch (`${entityType}${operationType}`) {
       case `${EntityType.Field}${OperationType.Delete}`:
       case `${EntityType.Block}${OperationType.Delete}`:
-        invalidateMultipleQueries(queryClient, [['Hortiview-articles-client', 'cropseasons']]);
+        invalidateMultipleQueries(queryClient, [
+          ["Hortiview-articles-client", "cropseasons"],
+        ]);
         break;
       default:
         break;
@@ -110,6 +117,18 @@ const useTriggerAdditionalFunctions = () => {
  * @param icon
  * @returns
  */
-const AlertIcon = ({ icon, danger = false }: { icon?: string | null; danger?: boolean }) => {
-  return <img alt={icon ?? 'icon'} src={icon ?? 'notifications'} className={danger ? styles.colorDanger : ''} />;
+const AlertIcon = ({
+  icon,
+  danger = false,
+}: {
+  icon?: string | null;
+  danger?: boolean;
+}) => {
+  return (
+    <img
+      alt={icon ?? "icon"}
+      src={icon ?? "notifications"}
+      className={danger ? styles.colorDanger : ""}
+    />
+  );
 };
