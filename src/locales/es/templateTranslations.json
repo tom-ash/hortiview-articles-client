@@ -1,15 +1,16 @@
 {
     "template": {
-        "testname": "Prueba en español",
-        "routingtest": "Prueba de enrutamiento a la página de prueba",
-        "farmTitle": "Primera granja para la organización",
-        "testpageTitle": "Página de prueba",
-        "testpageText": "Esta es una página de prueba",
-        "testpageLink": "Ir a Inicio"
+        "homeHeading": "Hortiview Articles",
+        "homeIntro": "Bienvenido a Hortiview Articles.",
+        "homePageLink": "Ir a casa",
+        "articlesPageTitle": "TODO",
+        "articlesPageText": "TODO",
+        "articlesPageLink": "Ir a artículos"
     },
     "routes": {
         "local": "Módulo de plantilla",
         "debug": "Depuración",
-        "testpage": "Página de prueba"
+        "testpage": "Página de prueba",
+        "articles": "Artículos"
     }
 }

@@ -1,6 +1,4 @@
-
-import { Banner } from "../ElementBackup/Banner";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from './hooks/useBase';
 import { Routing } from './routing/Routing';
@@ -26,7 +24,6 @@ type ModuleBaseProps = {
  */
 export const ModuleBase = ({ props, requiredProps, routes }: ModuleBaseProps) => {
   const { i18n, t } = useTranslation();
-  const [open, setOpen] = useState(true);
   const setBaseProps = useBasePropsStore(state => state.setCustomProps);
   const currentLanguage = useBasePropsStore(state => state.currentLanguage);
   // to load the environment config a sourcePath is needed
@@ -62,16 +59,20 @@ export const ModuleBase = ({ props, requiredProps, routes }: ModuleBaseProps) =>
       {t('common.loading')}
     </div> 
   return (
-    <>
-      {props.standalone && (
-        <Banner open={open} fixed onClosing={() => setOpen(false)}>
-          Currently running locally with standalone mode enabled
-        </Banner>
-      )}
-      <SignalRProvider>
+    <SignalRProvider>
+      <div
+        // TODO: Temporary general styling for development purposes.
+        style={{
+          width: 640,
+          minHeight: 400,
+          margin: '128px auto',
+          border: '1px solid gray',
+          padding: 20,
+        }}
+      >
         <Routing basePath={props.basePath} routes={Object.values(routes)} />
-      </SignalRProvider>
-    </>
+      </div>
+    </SignalRProvider>
   );
 };
 

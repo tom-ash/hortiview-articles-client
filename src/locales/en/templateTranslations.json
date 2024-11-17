@@ -1,15 +1,15 @@
 {
     "template": {
-        "testname": "Test in english",
-        "routingtest": "Routing test to Testpage",
-        "farmTitle": "First Farm for the organization",
-        "testpageTitle": "Testpage",
-        "testpageText": "This is a testpage",
-        "testpageLink": "Go to Home"
+        "homeHeading": "Hortiview Articles",
+        "homeIntro": "Welcome to Hortiview Articles.",
+        "homePageLink": "Go to Home",
+        "articlesPageTitle": "TODO",
+        "articlesPageText": "TODO",
+        "articlesPageLink": "Go to Articles"
     },
     "routes": {
         "local": "hortiview-articles-client",
         "debug": "Debugging",
-        "testpage": "Testpage"
+        "articles": "Articles"
     }
 }

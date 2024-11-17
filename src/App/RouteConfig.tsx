@@ -1,8 +1,8 @@
 import { RouteDefinition } from "../Base/types/BaseTypes";
-import { Showcase } from "../pages/Testpages/Showcase";
-import { Testpage } from "../pages/Testpages/Testpage";
+import { ArticlesIndex } from "../pages/Articles/Index";
+import { Home } from "../pages/Home";
 
 export const RouteConfig: RouteDefinition = {
-  Home: { path: "/", element: <Showcase /> },
-  Testpage: { path: "/testpage", element: <Testpage />, translationKey: "testpage"},
+  Home: { path: "/", element: <Home /> },
+  ArticlesIndex: { path: "/articles", element: <ArticlesIndex />, translationKey: "articles"},
 };
