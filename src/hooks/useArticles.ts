@@ -10,12 +10,19 @@ const GET_ARTICLES = gql`
         title
         description
         publishedOn
+        tags {
+          value
+        }
         author {
           name
         }
     }
   }
 `;
+
+export interface Tag {
+  value: string;
+}
 
 export interface ArticleItem {
   id: number
@@ -27,6 +34,7 @@ export interface ArticleItem {
   publishedOn: string
   createdAt: string
   updatedAt: string
+  tags: Tag[]
 }
 
 export interface Article extends ArticleItem {

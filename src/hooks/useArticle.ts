@@ -12,6 +12,9 @@ const GET_ARTICLE = gql`
         description
         content
         publishedOn
+        tags {
+          value
+        }
         author {
           name
         }

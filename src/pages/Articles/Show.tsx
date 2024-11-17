@@ -25,6 +25,7 @@ export const ArticlesShow = () => {
         publishedOn,
         description,
         content,
+        tags,
     } = article
 
     return (
@@ -41,6 +42,17 @@ export const ArticlesShow = () => {
                 {publishedOn}
                 {content}
             </div>
+            {tags && (
+                <ul>
+                {tags.map(({ value }) => {
+                    return (
+                    <li>
+                        {value}
+                    </li>
+                    )
+                })}
+                </ul>
+            )}
             <Button onClick={() => navigate(RouteConfig.ArticlesIndex.path)}>{t('template.articlesPageLink')}</Button>
         </div>
     )

@@ -22,6 +22,7 @@ export const ArticlesIndex = () => {
                     author,
                     publishedOn,
                     description,
+                    tags,
                 } = article
 
                 return (
@@ -45,6 +46,17 @@ export const ArticlesIndex = () => {
                     <div>
                       {description}
                     </div>
+                    {tags && (
+                      <ul>
+                        {tags.map(({ value }) => {
+                          return (
+                            <li>
+                              {value}
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    )}
                     <Button onClick={() => navigate(`${id}`)}>{t('template.articlePageLink')}</Button>
                   </div>
                 )
