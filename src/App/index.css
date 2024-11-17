@@ -1,0 +1,6 @@
+body {
+  background-color: var(
+    --lmnt-theme-surface-variant
+  ); /** TODO replace with variable in MVP*/
+  margin: 0;
+}

@@ -1,0 +1,2 @@
+import('./App/bootstrap');
+  export {};

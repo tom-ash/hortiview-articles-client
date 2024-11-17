@@ -1,1 +1,1 @@
-# hortiview-articles-client
+# Hortiview Articles

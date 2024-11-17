@@ -1,0 +1,3 @@
+.colorDanger {
+  color: var(--lmnt-theme-danger-on-surface) !important;
+}

@@ -1,0 +1,7 @@
+{
+  "name": "hortiview_articles",
+  "filename": "hortiviewarticles.js",
+  "exposes": {
+    "./hortiviewarticles": "./src/App/RemoteModule"
+  }
+}

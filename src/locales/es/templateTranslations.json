@@ -1,0 +1,15 @@
+{
+    "template": {
+        "testname": "Prueba en español",
+        "routingtest": "Prueba de enrutamiento a la página de prueba",
+        "farmTitle": "Primera granja para la organización",
+        "testpageTitle": "Página de prueba",
+        "testpageText": "Esta es una página de prueba",
+        "testpageLink": "Ir a Inicio"
+    },
+    "routes": {
+        "local": "Módulo de plantilla",
+        "debug": "Depuración",
+        "testpage": "Página de prueba"
+    }
+}

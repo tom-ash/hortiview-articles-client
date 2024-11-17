@@ -1,0 +1,40 @@
+{
+  "short_name": "hortiviewArticlesClient",
+  "name": "hortiview-articles-client",
+  "icons": [
+    {
+      "src": "images/hv-logo-32.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "images/hv-logo-152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "images/hv-logo-196.png",
+      "type": "image/png",
+      "sizes": "196x196"
+    },
+    {
+      "src": "images/hv-logo-144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "images/hv-logo-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "images/hv-logo-48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
