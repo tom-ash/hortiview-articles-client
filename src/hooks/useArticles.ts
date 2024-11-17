@@ -17,15 +17,36 @@ const GET_ARTICLES = gql`
   }
 `;
 
+export interface ArticleItem {
+  id: number
+  author: {
+    name: string
+  }
+  title: string
+  description: string
+  publishedOn: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface Article extends ArticleItem {
+  content: string
+}
+
 export const useArticles = () => {
   const { data, isLoading, error } = useQuery({ queryKey: [GET_ARTICLES] });
 
   // TODO: Handle isLoading
 
-  // TODO: Extend error handling.
   if (error) {
     console.error(error)
+
+    // TODO: Extend error handling.
+    throw error
   }
 
-  return data
+  if (data) {
+    // @ts-expect-error TODO: Add typing to data.
+    return data.articles as ArticleItem[]
+  }
 }

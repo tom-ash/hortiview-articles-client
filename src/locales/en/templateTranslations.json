@@ -5,7 +5,8 @@
         "homePageLink": "Go to Home",
         "articlesPageTitle": "TODO",
         "articlesPageText": "TODO",
-        "articlesPageLink": "Go to Articles"
+        "articlesPageLink": "Go to Articles",
+        "articlePageLink": "Show Article"
     },
     "routes": {
         "local": "hortiview-articles-client",

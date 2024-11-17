@@ -22,6 +22,9 @@ const apolloClient = new ApolloClient({
 
 const queryFn = async ({ queryKey }: { queryKey: QueryKey }) => {
   const [query, variables] = queryKey;
+
+  console.log(variables)
+
   const { data } = await apolloClient.query({
     query,
     variables,

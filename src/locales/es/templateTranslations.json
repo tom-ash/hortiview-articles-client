@@ -5,7 +5,8 @@
         "homePageLink": "Ir a casa",
         "articlesPageTitle": "TODO",
         "articlesPageText": "TODO",
-        "articlesPageLink": "Ir a artículos"
+        "articlesPageLink": "Ir a artículos",
+        "articlePageLink": "(Show Article)"
     },
     "routes": {
         "local": "Módulo de plantilla",
