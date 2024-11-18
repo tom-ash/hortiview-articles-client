@@ -65,18 +65,7 @@ export const ModuleBase = ({
     return <div>{t("common.loading")}</div>;
   return (
     <SignalRProvider>
-      <div
-        // TODO: Temporary general styling for development purposes.
-        style={{
-          width: 640,
-          minHeight: 400,
-          margin: "128px auto",
-          border: "1px solid gray",
-          padding: 20,
-        }}
-      >
-        <Routing basePath={props.basePath} routes={Object.values(routes)} />
-      </div>
+      <Routing basePath={props.basePath} routes={Object.values(routes)} />
     </SignalRProvider>
   );
 };

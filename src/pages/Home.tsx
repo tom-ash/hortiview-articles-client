@@ -9,7 +9,7 @@ export const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <Group direction="vertical">
+    <Group direction="vertical" classNames={["home"]}>
       <h1>{t("template.homeHeading")}</h1>
       <p>{t("template.homeIntro")}</p>
       <Button onClick={() => navigate(RouteConfig.ArticlesIndex.path)}>

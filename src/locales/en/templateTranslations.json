@@ -3,9 +3,9 @@
     "homeHeading": "Hortiview Articles",
     "homeIntro": "Welcome to Hortiview Articles.",
     "homePageLink": "Go to Home",
-    "articlesPageTitle": "TODO",
+    "articlesPageTitle": "Articles Browser",
     "articlesPageText": "TODO",
-    "articlesPageLink": "Go to Articles",
+    "articlesPageLink": "Go to Articles Browser",
     "articlePageLink": "Show Article"
   },
   "routes": {

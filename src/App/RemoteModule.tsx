@@ -8,6 +8,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ApolloClient, gql, InMemoryCache } from "@apollo/client";
 import { DocumentNode } from "graphql";
 
+// TODO: Add styles.
+
 interface QueryVariables {
   [key: string]: any;
 }

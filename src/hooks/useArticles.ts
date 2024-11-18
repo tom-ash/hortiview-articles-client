@@ -24,11 +24,13 @@ export interface Tag {
   value: string;
 }
 
+export interface Author {
+  name: string;
+}
+
 export interface ArticleItem {
   id: number;
-  author: {
-    name: string;
-  };
+  author: Author;
   title: string;
   description: string;
   publishedOn: string;

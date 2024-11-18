@@ -1,6 +1,93 @@
 body {
-  background-color: var(
-    --lmnt-theme-surface-variant
-  ); /** TODO replace with variable in MVP*/
   margin: 0;
+
+  .button {
+    border: none;
+    padding: 10px;
+    background: #2c3e50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .group.vertical {
+    width: 640px;
+    min-height: 400px;
+    margin: 128px auto;
+  }
+
+  .home {
+    text-align: center;
+  }
+
+  .go-to-home-button {
+    background: none;
+    color: black;
+    padding: 0;
+    text-decoration: underline;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .article.item {
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 40px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    h2 {
+      margin: 0;
+    }
+  }
+
+  ul.tags {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    li {
+      font-size: 12px;
+      background: #f2f3f4;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+  }
+
+  .autor-and-date {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .description {
+    margin-top: 30px;
+  }
+
+  .article-item-button {
+    display: block;
+    margin-top: 30px;
+    margin: 40px auto 0;
+  }
+
+  .article.show {
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    line-height: 1.5;
+    h1 {
+      margin: 0;
+    }
+  }
+
+  .articles-browser {
+    h1 {
+      text-align: center;
+    }
+  }
 }
