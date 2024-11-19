@@ -11,7 +11,17 @@ export const ArticlesIndex = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const articles = useArticles();
+  const { data, isLoading, error } = useArticles();
+
+  if (isLoading || !data) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Something went wrong...</div>;
+  }
+
+  const articles = data.articles;
 
   return (
     <Group direction="vertical" classNames={["articles-browser"]}>
@@ -22,7 +32,7 @@ export const ArticlesIndex = () => {
           const { id, title, author, publishedOn, description, tags } = article;
 
           return (
-            <li className="article item">
+            <li className="article item" key={`${id}-${title}`}>
               <h2>{title}</h2>
               <Article
                 tags={tags}

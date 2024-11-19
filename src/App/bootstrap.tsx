@@ -4,6 +4,8 @@ import reportWebVitals from "../reportWebVitals";
 import RemoteModule from "./RemoteModule";
 import "./index.css";
 
+// TODO
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );

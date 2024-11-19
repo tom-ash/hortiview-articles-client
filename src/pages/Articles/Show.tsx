@@ -11,12 +11,17 @@ export const ArticlesShow = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { id } = useParams();
-  const article = useArticle(Number(id));
+  const { data, isLoading, error } = useArticle(Number(id));
 
-  // TODO: Add loader.
-  if (!article) {
-    return <div>LOADING</div>;
+  if (isLoading || !data) {
+    return <div>Loading...</div>;
   }
+
+  if (error) {
+    return <div>Something went wrong...</div>;
+  }
+
+  const article = data.article;
 
   const { title, author, publishedOn, description, content, tags } = article;
 

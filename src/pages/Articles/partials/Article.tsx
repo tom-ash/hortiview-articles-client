@@ -1,4 +1,4 @@
-import { Author, Tag } from "../../../hooks/useArticles";
+import { Author, Tag } from "../../../types";
 
 interface ArticleProps {
   tags: Tag[];
@@ -15,7 +15,7 @@ export const Article = (props: ArticleProps) => {
       {tags && (
         <ul className="tags">
           {tags.map(({ value }) => {
-            return <li>{value}</li>;
+            return <li key={value}>{value}</li>;
           })}
         </ul>
       )}

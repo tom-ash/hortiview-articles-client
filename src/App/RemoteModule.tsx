@@ -8,13 +8,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ApolloClient, gql, InMemoryCache } from "@apollo/client";
 import { DocumentNode } from "graphql";
 
-// TODO: Add styles.
-
 interface QueryVariables {
   [key: string]: any;
 }
 type QueryKey = readonly [DocumentNode, QueryVariables?];
 
+// TODO: Move to .env
 const API_GRAPHQL_ENDPOINT = "http://localhost:3000/graphql";
 
 const apolloClient = new ApolloClient({

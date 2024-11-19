@@ -31,7 +31,7 @@ module.exports = {
       ...webpackConfig,
       output: {
         ...webpackConfig.output,
-        publicPath: 'auto',
+        publicPath: '/',
       },
     }),
   },
