@@ -3,9 +3,9 @@
     "homeHeading": "Hortiview Articles",
     "homeIntro": "Bienvenido a Hortiview Articles.",
     "homePageLink": "Ir a casa",
-    "articlesPageTitle": "(Articles Browser)",
+    "articlesPageTitle": "Navegador de artículos",
     "articlesPageLink": "Ir a artículos",
-    "articlePageLink": "(Show Article)"
+    "articlePageLink": "Mostrar artículo"
   },
   "routes": {
     "local": "Módulo de plantilla",
