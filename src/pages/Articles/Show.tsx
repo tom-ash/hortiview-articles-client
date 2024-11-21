@@ -6,6 +6,7 @@ import { useArticle } from "../../hooks/useArticle";
 import { Article } from "./partials/Article";
 import { Group } from "../../ElementBackup/Group";
 import { GoToHomeButton } from "./partials/GoToHomeButton";
+import styles from "../../styles/styles.module.css";
 
 export const ArticlesShow = () => {
   const navigate = useNavigate();
@@ -26,9 +27,9 @@ export const ArticlesShow = () => {
   const { title, author, publishedOn, description, content, tags } = article;
 
   return (
-    <Group direction="vertical">
+    <Group direction="vertical" classNames={[styles.vertical]}>
       <GoToHomeButton />
-      <div className="article show">
+      <div className={`${styles.article} ${styles.show}`}>
         <h1>{title}</h1>
         <Article
           tags={tags}
@@ -36,10 +37,10 @@ export const ArticlesShow = () => {
           publishedOn={publishedOn}
           description={description}
         />
-        <div className="content">{content}</div>
+        <div className={styles.content}>{content}</div>
         <Button
           onClick={() => navigate(RouteConfig.ArticlesIndex.path)}
-          className="article-item-button"
+          className={`${styles.defaultButton} ${styles.defaultButton}`}
         >
           {t("template.articlesPageLink")}
         </Button>

@@ -6,6 +6,7 @@ import { useArticles } from "../../hooks/useArticles";
 import { Group } from "../../ElementBackup/Group";
 import { Article } from "./partials/Article";
 import { GoToHomeButton } from "./partials/GoToHomeButton";
+import styles from "../../styles/styles.module.css";
 
 export const ArticlesIndex = () => {
   const navigate = useNavigate();
@@ -24,15 +25,20 @@ export const ArticlesIndex = () => {
   const articles = data.articles;
 
   return (
-    <Group direction="vertical" classNames={["articles-browser"]}>
+    <Group direction="vertical" classNames={[styles.vertical]}>
       <GoToHomeButton />
-      <h1>{t("template.articlesPageTitle")}</h1>
-      <ul>
+      <h1 className={styles.articlesIndexHeading}>
+        {t("template.articlesPageTitle")}
+      </h1>
+      <ul className={styles.unorderedList}>
         {(articles || []).map((article) => {
           const { id, title, author, publishedOn, description, tags } = article;
 
           return (
-            <li className="article item" key={`${id}-${title}`}>
+            <li
+              className={`${styles.article} ${styles.listItem}`}
+              key={`${id}-${title}`}
+            >
               <h2>{title}</h2>
               <Article
                 tags={tags}
@@ -42,7 +48,7 @@ export const ArticlesIndex = () => {
               />
               <Button
                 onClick={() => navigate(`${id}`)}
-                className="article-item-button"
+                className={`${styles.defaultButton} ${styles.defaultButton}`}
               >
                 {t("template.articlePageLink")}
               </Button>
@@ -50,7 +56,10 @@ export const ArticlesIndex = () => {
           );
         })}
       </ul>
-      <Button onClick={() => navigate(RouteConfig.Home.path)}>
+      <Button
+        onClick={() => navigate(RouteConfig.Home.path)}
+        className={`${styles.defaultButton} ${styles.defaultButton}`}
+      >
         {t("template.homePageLink")}
       </Button>
     </Group>
